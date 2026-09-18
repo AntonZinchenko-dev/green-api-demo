@@ -1,0 +1,93 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 44px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+  transition:
+    box-shadow var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.field:hover {
+  box-shadow: inset 0 0 0 1px #c3ccdf;
+}
+
+.field:focus-within {
+  box-shadow:
+    inset 0 0 0 1.5px var(--color-primary),
+    0 0 0 4px rgba(43, 92, 246, 0.12);
+}
+
+.fieldError {
+  box-shadow: inset 0 0 0 1.5px var(--color-danger);
+}
+
+.fieldError:focus-within {
+  box-shadow:
+    inset 0 0 0 1.5px var(--color-danger),
+    0 0 0 4px rgba(229, 72, 77, 0.12);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size-md);
+}
+
+/* Кольцо фокуса рисует обёртка .field — второй контур не нужен. */
+.input:focus-visible {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.startSlot {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-secondary);
+}
+
+.revealButton {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-tertiary);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.revealButton:hover {
+  color: var(--color-text-secondary);
+}
+
+.hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.errorText {
+  color: var(--color-danger);
+}

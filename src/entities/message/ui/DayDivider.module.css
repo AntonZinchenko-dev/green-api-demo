@@ -1,0 +1,15 @@
+.root {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-4) 0 var(--space-3);
+}
+
+.pill {
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.72);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  backdrop-filter: blur(4px);
+}

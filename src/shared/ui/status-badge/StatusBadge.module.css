@@ -1,0 +1,43 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.online {
+  color: #15803d;
+  background: #e8f8ee;
+}
+
+.pending {
+  color: #a16207;
+  background: #fdf6e3;
+}
+
+.pending .dot {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.offline {
+  color: var(--color-danger);
+  background: var(--color-danger-soft);
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}

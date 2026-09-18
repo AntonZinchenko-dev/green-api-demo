@@ -1,0 +1,28 @@
+.root {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.sm {
+  width: 30px;
+  height: 30px;
+  font-size: var(--font-size-xs);
+}
+
+.md {
+  width: 42px;
+  height: 42px;
+  font-size: var(--font-size-md);
+}
+
+.lg {
+  width: 48px;
+  height: 48px;
+  font-size: var(--font-size-lg);
+}

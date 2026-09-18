@@ -1,0 +1,76 @@
+.root {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: min(380px, calc(100vw - 2 * var(--space-5)));
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  animation: slide var(--duration-base) var(--ease-out);
+}
+
+.icon {
+  margin-top: 1px;
+}
+
+.text {
+  flex: 1;
+  font-size: var(--font-size-md);
+  line-height: 1.4;
+}
+
+.close {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin: -1px -4px 0 0;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-tertiary);
+}
+
+.close:hover {
+  color: var(--color-text);
+}
+
+.error {
+  box-shadow: var(--shadow-md), inset 3px 0 0 var(--color-danger);
+}
+
+.error .icon {
+  color: var(--color-danger);
+}
+
+.success {
+  box-shadow: var(--shadow-md), inset 3px 0 0 var(--color-success);
+}
+
+.success .icon {
+  color: var(--color-success);
+}
+
+.info {
+  box-shadow: var(--shadow-md), inset 3px 0 0 var(--color-primary);
+}
+
+.info .icon {
+  color: var(--color-primary);
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}

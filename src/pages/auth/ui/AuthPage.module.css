@@ -1,0 +1,132 @@
+.root {
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+  padding: var(--space-6) var(--space-4);
+  background:
+    radial-gradient(900px 500px at 15% -10%, #dfe6fb 0%, transparent 60%),
+    radial-gradient(700px 400px at 100% 110%, #e5dffb 0%, transparent 55%),
+    var(--color-bg);
+}
+
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  width: 100%;
+  max-width: 880px;
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.promo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8);
+  overflow: hidden;
+  color: #fff;
+  background:
+    linear-gradient(160deg, #0d1233 0%, #131a45 45%, #1b1f55 100%);
+}
+
+.promoTop {
+  position: relative;
+  z-index: 1;
+}
+
+.promoText {
+  position: relative;
+  z-index: 1;
+  margin-top: var(--space-8);
+}
+
+.promoTitle {
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.promoSubtitle {
+  max-width: 260px;
+  margin-top: var(--space-3);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Декоративные градиентные пятна в нижней части панели */
+.blobs {
+  position: absolute;
+  inset: auto -20% -25% -20%;
+  height: 62%;
+  filter: blur(14px) saturate(1.1);
+}
+
+.blobs span {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+.blobOne {
+  left: 6%;
+  bottom: -14%;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle at 30% 30%, #7aa2ff 0%, #4460e8 45%, rgba(40, 60, 190, 0) 72%);
+}
+
+.blobTwo {
+  left: 34%;
+  bottom: 2%;
+  width: 210px;
+  height: 210px;
+  background: radial-gradient(circle at 35% 30%, #b78bff 0%, #6f4de0 48%, rgba(80, 50, 190, 0) 72%);
+}
+
+.blobThree {
+  left: -4%;
+  bottom: 18%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 40% 35%, #5ce0ff 0%, #2f7de8 50%, rgba(30, 90, 210, 0) 74%);
+}
+
+.formSide {
+  display: grid;
+  place-items: center;
+  padding: var(--space-8);
+}
+
+@media (max-width: 800px) {
+  .card {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .promo {
+    min-height: 220px;
+    padding: var(--space-6);
+  }
+
+  .promoText {
+    margin-top: var(--space-5);
+  }
+
+  .promoTitle {
+    font-size: 24px;
+  }
+
+  .blobs {
+    height: 75%;
+    opacity: 0.8;
+  }
+
+  .formSide {
+    padding: var(--space-6);
+  }
+}

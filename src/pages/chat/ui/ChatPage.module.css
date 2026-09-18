@@ -1,0 +1,54 @@
+.root {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.panes {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+.listPane {
+  display: flex;
+  min-height: 0;
+}
+
+.windowPane {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+}
+
+@media (max-width: 900px) {
+  .root {
+    flex-direction: column;
+  }
+
+  .panes {
+    flex-direction: column;
+  }
+
+  .listPane,
+  .windowPane {
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* На узких экранах видна либо лента чатов, либо переписка. */
+  .windowPane {
+    display: none;
+  }
+
+  .chatOpen .listPane {
+    display: none;
+  }
+
+  .chatOpen .windowPane {
+    display: flex;
+  }
+}

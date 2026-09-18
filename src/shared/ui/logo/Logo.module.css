@@ -1,0 +1,43 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  color: #fff;
+  background: linear-gradient(135deg, #5b8bff 0%, #8b5cf6 100%);
+  box-shadow: 0 4px 12px rgba(91, 139, 255, 0.35);
+}
+
+.markSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.word {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+.lg .mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+}
+
+.lg .word {
+  font-size: 27px;
+}
+
+.inverted .word {
+  color: #fff;
+}
