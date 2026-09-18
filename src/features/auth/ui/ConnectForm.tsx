@@ -46,7 +46,7 @@ export function ConnectForm() {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
+    <form className={styles.form} onSubmit={handleSubmit} noValidate autoComplete="off">
       <div className={styles.heading}>
         <h1 className={styles.title}>Подключение к GREEN-API</h1>
         <p className={styles.subtitle}>
@@ -61,6 +61,10 @@ export function ConnectForm() {
           placeholder="Например: 1101123456"
           inputMode="numeric"
           autoComplete="off"
+          name="green-api-instance"
+          data-lpignore="true"
+          data-1p-ignore=""
+          data-form-type="other"
           spellCheck={false}
           value={idInstance}
           error={errors.idInstance}
@@ -73,7 +77,15 @@ export function ConnectForm() {
         <TextField
           label="API Token"
           placeholder="Введите ваш API Token"
+          /*
+           * Поле скрытое, значит менеджеры паролей считают его паролем
+           * и предлагают подставить сохранённый — это не пароль, а токен инстанса.
+           */
           autoComplete="off"
+          name="green-api-token"
+          data-lpignore="true"
+          data-1p-ignore=""
+          data-form-type="other"
           spellCheck={false}
           secret
           value={apiTokenInstance}

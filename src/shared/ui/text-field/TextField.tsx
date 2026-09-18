@@ -11,6 +11,8 @@ interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'si
   /** Кнопка-глаз для скрытия/показа значения. */
   secret?: boolean;
   startSlot?: ReactNode;
+  /** data-атрибуты для подсказок менеджерам паролей (data-lpignore и подобные). */
+  [dataAttribute: `data-${string}`]: unknown;
 }
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextField(

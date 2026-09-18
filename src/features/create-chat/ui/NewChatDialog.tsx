@@ -43,12 +43,22 @@ export function NewChatDialog({ open, onClose }: NewChatDialogProps) {
 
   return (
     <Modal open={open} title="Новый чат" onClose={onClose}>
-      <form className={styles.form} onSubmit={handleSubmit} noValidate>
+      <form className={styles.form} onSubmit={handleSubmit} noValidate autoComplete="off">
         <TextField
           label="Номер телефона получателя"
           placeholder="+7 999 123-45-67"
           inputMode="tel"
-          autoComplete="tel"
+          /*
+           * Здесь вводится чужой номер, а не свой, поэтому подстановка из адресной
+           * книги только мешает: её выпадашка перекрывает кнопку «Создать чат».
+           * name без слов phone/tel — иначе Chrome распознаёт поле эвристиками
+           * и предлагает автозаполнение даже при autocomplete="off".
+           */
+          autoComplete="off"
+          name="chat-recipient"
+          data-lpignore="true"
+          data-1p-ignore=""
+          data-form-type="other"
           value={phone}
           error={error}
           hint="Введите номер в международном формате"
