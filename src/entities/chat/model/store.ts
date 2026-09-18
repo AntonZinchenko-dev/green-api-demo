@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CHATS_STORAGE_KEY } from '@/shared/config/app';
+import { CHATS_STORAGE_KEY } from '@/shared/config';
 import { createLocalId } from '@/shared/lib/id';
 import { chatIdToPhone, formatPhone } from '@/shared/lib/phone';
 import type { Chat } from './types';
@@ -203,6 +203,15 @@ export function sortChats(chats: Chat[]): Chat[] {
   return [...chats].sort(
     (a, b) => (b.lastMessageAt ?? b.createdAt) - (a.lastMessageAt ?? a.createdAt),
   );
+}
+
+/**
+ * У чата есть настоящее имя собеседника, а не заголовок из номера телефона.
+ * Пока имя не пришло из уведомления, номер показывается один раз — как заголовок.
+ */
+export function hasCustomName(chat: Chat): boolean {
+  if (!chat.phone) return true;
+  return chat.name.trim() !== formatPhone(chat.phone);
 }
 
 /** Идентификатор для отправки: постоянный chatId либо номер в формате `…@c.us`. */

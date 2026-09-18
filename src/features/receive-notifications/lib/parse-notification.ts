@@ -1,5 +1,5 @@
 import type { MessageDirection, MessageStatus } from '@/entities/message';
-import type { InstanceState, Notification } from '@/shared/api/green-api';
+import type { InstanceState, Notification } from '@/shared/api';
 
 export type NotificationEvent =
   | {

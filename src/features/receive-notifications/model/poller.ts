@@ -1,6 +1,6 @@
 import { getClient } from '@/entities/session';
-import { GreenApiError } from '@/shared/api/green-api';
-import { POLLING_RETRY_DELAY_MS, RECEIVE_TIMEOUT_SECONDS } from '@/shared/config/app';
+import { GreenApiError } from '@/shared/api';
+import { POLLING_RETRY_DELAY_MS, RECEIVE_TIMEOUT_SECONDS } from '@/shared/config';
 import { applyNotification } from './apply-notification';
 
 const MAX_RETRY_DELAY_MS = 30_000;

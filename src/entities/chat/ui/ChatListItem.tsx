@@ -2,6 +2,7 @@ import { cn } from '@/shared/lib/cn';
 import { formatChatListTime } from '@/shared/lib/datetime';
 import { formatPhone } from '@/shared/lib/phone';
 import { Avatar } from '@/shared/ui';
+import { hasCustomName } from '../model/store';
 import type { Chat } from '../model/types';
 import styles from './ChatListItem.module.css';
 
@@ -12,7 +13,10 @@ interface ChatListItemProps {
 }
 
 export function ChatListItem({ chat, active, onSelect }: ChatListItemProps) {
-  const subtitle = chat.lastMessageText || (chat.phone ? formatPhone(chat.phone) : 'Нет сообщений');
+  const named = hasCustomName(chat);
+  // Если заголовок чата — сам номер, не повторяем его во второй строке.
+  const fallbackSubtitle = named && chat.phone ? formatPhone(chat.phone) : 'Нет сообщений';
+  const subtitle = chat.lastMessageText || fallbackSubtitle;
 
   return (
     <li>
@@ -22,7 +26,7 @@ export function ChatListItem({ chat, active, onSelect }: ChatListItemProps) {
         onClick={() => onSelect(chat.key)}
         aria-current={active || undefined}
       >
-        <Avatar name={chat.name} seed={chat.key} />
+        <Avatar name={chat.name} seed={chat.key} anonymous={!named} />
 
         <span className={styles.body}>
           <span className={styles.top}>

@@ -1,7 +1,7 @@
 import { useChatsStore } from '@/entities/chat';
 import { useMessagesStore } from '@/entities/message';
 import { useSessionStore } from '@/entities/session';
-import type { Notification } from '@/shared/api/green-api';
+import type { Notification } from '@/shared/api';
 import { parseNotification } from '../lib/parse-notification';
 import type { NotificationEvent } from '../lib/parse-notification';
 

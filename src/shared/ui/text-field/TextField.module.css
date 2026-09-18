@@ -59,6 +59,23 @@
   outline: none;
 }
 
+/*
+ * Автозаполнение: Chrome красит поле собственным фоном поверх прозрачного input,
+ * из-за чего заливка не совпадает с обёрткой. Перекрываем её внутренней тенью,
+ * а бесконечный transition не даёт браузеру вернуть свой цвет.
+ */
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--color-text);
+  -webkit-box-shadow: inset 0 0 0 1000px var(--color-surface);
+  box-shadow: inset 0 0 0 1000px var(--color-surface);
+  caret-color: var(--color-text);
+  border-radius: 0;
+  transition: background-color 600000s 0s;
+}
+
 .input::placeholder {
   color: var(--color-text-tertiary);
 }

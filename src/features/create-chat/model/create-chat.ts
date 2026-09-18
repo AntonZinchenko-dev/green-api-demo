@@ -1,7 +1,7 @@
 import { useChatsStore } from '@/entities/chat';
 import { useMessagesStore } from '@/entities/message';
 import { getClient } from '@/entities/session';
-import { GreenApiError, toUserMessage } from '@/shared/api/green-api';
+import { GreenApiError, toUserMessage } from '@/shared/api';
 import { getPhoneError, normalizePhone } from '@/shared/lib/phone';
 
 export interface CreateChatResult {

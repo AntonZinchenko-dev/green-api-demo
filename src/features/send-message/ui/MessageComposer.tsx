@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import type { FormEvent, KeyboardEvent } from 'react';
-import { MAX_MESSAGE_LENGTH } from '@/shared/config/app';
+import { MAX_MESSAGE_LENGTH } from '@/shared/config';
 import { PlusIcon, SendIcon, toast } from '@/shared/ui';
 import { sendMessage } from '../model/send-message';
 import styles from './MessageComposer.module.css';

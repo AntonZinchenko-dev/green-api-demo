@@ -1,8 +1,8 @@
 import { getSendableChatId, useChatsStore } from '@/entities/chat';
 import { useMessagesStore } from '@/entities/message';
 import { getClient } from '@/entities/session';
-import { toUserMessage } from '@/shared/api/green-api';
-import { MAX_MESSAGE_LENGTH } from '@/shared/config/app';
+import { toUserMessage } from '@/shared/api';
+import { MAX_MESSAGE_LENGTH } from '@/shared/config';
 import { createLocalId } from '@/shared/lib/id';
 
 export interface SendMessageResult {

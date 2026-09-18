@@ -1,17 +1,10 @@
 import { useShallow } from 'zustand/react/shallow';
-import { useChatsStore } from '@/entities/chat';
+import { hasCustomName, useChatsStore } from '@/entities/chat';
 import { selectChatMessages, useMessagesStore } from '@/entities/message';
 import { useSessionStore } from '@/entities/session';
 import { MessageComposer } from '@/features/send-message';
 import { formatPhone } from '@/shared/lib/phone';
-import {
-  Avatar,
-  BackIcon,
-  EmptyChatsIllustration,
-  EmptyState,
-  SettingsIcon,
-  StatusBadge,
-} from '@/shared/ui';
+import { Avatar, BackIcon, EmptyChatsIllustration, EmptyState, StatusBadge } from '@/shared/ui';
 import type { ConnectionTone } from '@/shared/ui';
 import { MessageList } from './MessageList';
 import styles from './ChatWindow.module.css';
@@ -19,10 +12,9 @@ import styles from './ChatWindow.module.css';
 interface ChatWindowProps {
   /** Очередь уведомлений отвечает. */
   online: boolean;
-  onOpenSettings: () => void;
 }
 
-export function ChatWindow({ online, onOpenSettings }: ChatWindowProps) {
+export function ChatWindow({ online }: ChatWindowProps) {
   const activeChatKey = useChatsStore((state) => state.activeChatKey);
   const setActiveChat = useChatsStore((state) => state.setActiveChat);
   const chat = useChatsStore(
@@ -49,11 +41,14 @@ export function ChatWindow({ online, onOpenSettings }: ChatWindowProps) {
               <BackIcon size={20} />
             </button>
 
-            <Avatar name={chat.name} seed={chat.key} />
+            <Avatar name={chat.name} seed={chat.key} anonymous={!hasCustomName(chat)} />
 
             <div className={styles.peer}>
               <span className={styles.peerName}>{chat.name}</span>
-              {chat.phone && <span className={styles.peerPhone}>{formatPhone(chat.phone)}</span>}
+              {/* Номер во второй строке — только если заголовок чата не сам номер. */}
+              {chat.phone && hasCustomName(chat) && (
+                <span className={styles.peerPhone}>{formatPhone(chat.phone)}</span>
+              )}
             </div>
           </>
         ) : (
@@ -62,14 +57,6 @@ export function ChatWindow({ online, onOpenSettings }: ChatWindowProps) {
 
         <div className={styles.headerActions}>
           <StatusBadge tone={tone} />
-          <button
-            type="button"
-            className={styles.iconButton}
-            onClick={onOpenSettings}
-            aria-label="Настройки подключения"
-          >
-            <SettingsIcon size={18} />
-          </button>
         </div>
       </header>
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import type { Notification } from '@/shared/api/green-api';
+import type { Notification } from '@/shared/api';
 import { parseNotification } from './parse-notification';
 
 const incoming: Notification = {

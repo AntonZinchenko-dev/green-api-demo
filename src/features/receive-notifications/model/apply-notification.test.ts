@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { useChatsStore } from '@/entities/chat';
 import { useMessagesStore } from '@/entities/message';
-import type { Notification } from '@/shared/api/green-api';
+import type { Notification } from '@/shared/api';
 import { applyNotification } from './apply-notification';
 
 function incomingFrom(phone: number, chatId: string, text: string): Notification {

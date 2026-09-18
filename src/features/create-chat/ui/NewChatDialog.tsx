@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
-import { maskPhoneInput } from '@/shared/lib/phone';
-import { Button, Modal, TextField, toast } from '@/shared/ui';
+import { maskPhoneInput, normalizePhone } from '@/shared/lib/phone';
+import { Button, FlagByIcon, FlagRuIcon, Modal, TextField, toast } from '@/shared/ui';
 import { createChat } from '../model/create-chat';
 import styles from './NewChatDialog.module.css';
 
@@ -52,7 +52,11 @@ export function NewChatDialog({ open, onClose }: NewChatDialogProps) {
           value={phone}
           error={error}
           hint="Введите номер в международном формате"
-          startSlot={<span className={styles.flag}>🇷🇺</span>}
+          startSlot={
+            <span className={styles.flag}>
+              {normalizePhone(phone).startsWith('375') ? <FlagByIcon /> : <FlagRuIcon />}
+            </span>
+          }
           onChange={(event) => {
             setPhone(maskPhoneInput(event.target.value));
             setError(null);

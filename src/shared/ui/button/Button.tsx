@@ -6,6 +6,19 @@ import styles from './Button.module.css';
 type Variant = 'primary' | 'secondary' | 'ghost' | 'danger';
 type Size = 'md' | 'lg' | 'icon';
 
+const VARIANT_CLASS: Record<Variant, string> = {
+  primary: styles.variantPrimary,
+  secondary: styles.variantSecondary,
+  ghost: styles.variantGhost,
+  danger: styles.variantDanger,
+};
+
+const SIZE_CLASS: Record<Size, string> = {
+  md: styles.sizeMd,
+  lg: styles.sizeLg,
+  icon: styles.sizeIcon,
+};
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
@@ -31,8 +44,8 @@ export function Button({
       type={type}
       className={cn(
         styles.root,
-        styles[variant],
-        styles[size],
+        VARIANT_CLASS[variant],
+        SIZE_CLASS[size],
         fullWidth && styles.fullWidth,
         loading && styles.loading,
         className,
@@ -44,7 +57,7 @@ export function Button({
       {loading ? (
         <Spinner className={styles.spinner} />
       ) : (
-        startIcon && <span className={styles.icon}>{startIcon}</span>
+        startIcon && <span className={styles.startIcon}>{startIcon}</span>
       )}
       {children != null && <span className={styles.label}>{children}</span>}
     </button>

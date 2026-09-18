@@ -32,7 +32,7 @@ export function ChatPage() {
         </div>
 
         <div className={styles.windowPane}>
-          <ChatWindow online={online} onOpenSettings={() => setSettingsOpen(true)} />
+          <ChatWindow online={online} />
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { CHATS_STORAGE_KEY } from '@/shared/config/app';
+import { CHATS_STORAGE_KEY } from '@/shared/config';
 import type { Message, MessageStatus } from './types';
 
 interface MessagesState {

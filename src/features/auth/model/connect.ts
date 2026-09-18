@@ -1,8 +1,8 @@
 import { useChatsStore } from '@/entities/chat';
 import { useMessagesStore } from '@/entities/message';
 import { useSessionStore } from '@/entities/session';
-import { GreenApiClient, toUserMessage } from '@/shared/api/green-api';
-import type { GreenApiCredentials, InstanceState } from '@/shared/api/green-api';
+import { GreenApiClient, toUserMessage } from '@/shared/api';
+import type { GreenApiCredentials, InstanceState } from '@/shared/api';
 
 const STATE_MESSAGES: Partial<Record<InstanceState, string>> = {
   notAuthorized: 'Инстанс не авторизован в MAX. Отсканируйте QR-код в личном кабинете GREEN-API.',
@@ -58,12 +58,6 @@ export async function connect(credentials: GreenApiCredentials): Promise<Connect
     session.setError(message);
     return { ok: false, error: message };
   }
-}
-
-/** Закрывает сессию. Сохранённые чаты остаются на устройстве. */
-export function disconnect(): void {
-  useSessionStore.getState().reset();
-  useChatsStore.getState().setActiveChat(null);
 }
 
 /**

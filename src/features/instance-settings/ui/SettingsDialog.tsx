@@ -1,9 +1,8 @@
 import { useChatsStore } from '@/entities/chat';
 import { useMessagesStore } from '@/entities/message';
 import { useSessionStore } from '@/entities/session';
-import { resolveApiUrl } from '@/shared/api/green-api';
+import { resolveApiUrl } from '@/shared/api';
 import { Button, LogoutIcon, Modal, TrashIcon, toast } from '@/shared/ui';
-import { disconnect } from '@/features/auth';
 import styles from './SettingsDialog.module.css';
 
 interface SettingsDialogProps {
@@ -35,8 +34,10 @@ export function SettingsDialog({ open, onClose }: SettingsDialogProps) {
     onClose();
   };
 
+  // Закрываем сессию: учётные данные стираются, локальные чаты остаются.
   const handleDisconnect = () => {
-    disconnect();
+    useSessionStore.getState().reset();
+    useChatsStore.getState().setActiveChat(null);
     onClose();
   };
 

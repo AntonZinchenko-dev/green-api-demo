@@ -157,6 +157,40 @@ export function TrashIcon(props: IconProps & { size?: number }) {
   );
 }
 
+export function UserIcon(props: IconProps & { size?: number }) {
+  return (
+    <Icon {...props}>
+      <circle cx="12" cy="8.5" r="3.8" />
+      <path d="M4.8 20c.9-3.4 3.8-5.4 7.2-5.4s6.3 2 7.2 5.4" />
+    </Icon>
+  );
+}
+
+/*
+ * Флаги нарисованы вручную: эмодзи-флаги не отображаются в Windows —
+ * вместо 🇷🇺 система показывает буквы «RU».
+ */
+export function FlagRuIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true" {...props}>
+      <rect width="20" height="14" rx="2.5" fill="#fff" />
+      <path d="M0 4.667h20v4.666H0z" fill="#0039A6" />
+      <path d="M0 9.333h20V11.5A2.5 2.5 0 0 1 17.5 14h-15A2.5 2.5 0 0 1 0 11.5Z" fill="#D52B1E" />
+      <rect x="0.4" y="0.4" width="19.2" height="13.2" rx="2.1" fill="none" stroke="rgba(23,26,38,.12)" strokeWidth="0.8" />
+    </svg>
+  );
+}
+
+export function FlagByIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true" {...props}>
+      <rect width="20" height="14" rx="2.5" fill="#C8313E" />
+      <path d="M0 9.333h20V11.5A2.5 2.5 0 0 1 17.5 14h-15A2.5 2.5 0 0 1 0 11.5Z" fill="#4AA657" />
+      <rect x="0.4" y="0.4" width="19.2" height="13.2" rx="2.1" fill="none" stroke="rgba(23,26,38,.12)" strokeWidth="0.8" />
+    </svg>
+  );
+}
+
 export function EmptyChatsIllustration(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

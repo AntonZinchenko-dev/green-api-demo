@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { GreenApiClient } from '@/shared/api/green-api';
-import type { GreenApiCredentials, InstanceState } from '@/shared/api/green-api';
-import { SESSION_STORAGE_KEY } from '@/shared/config/app';
+import { GreenApiClient } from '@/shared/api';
+import type { GreenApiCredentials, InstanceState } from '@/shared/api';
+import { SESSION_STORAGE_KEY } from '@/shared/config';
 
 export type ConnectionStatus = 'disconnected' | 'connecting' | 'connected' | 'error';
 

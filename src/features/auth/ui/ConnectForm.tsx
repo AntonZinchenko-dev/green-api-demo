@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { useSessionStore } from '@/entities/session';
-import { resolveApiUrl } from '@/shared/api/green-api';
+import { resolveApiUrl } from '@/shared/api';
 import { Button, InfoIcon, TextField } from '@/shared/ui';
 import { connect } from '../model/connect';
 import styles from './ConnectForm.module.css';
